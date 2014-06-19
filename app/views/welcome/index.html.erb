@@ -1,5 +1,51 @@
-<h1>Life Tracker</h1>
-<ul>
-  <li class="events"><%= link_to "Schools Attended", schools_path %></li>
-  <li class="events"><%= link_to "Life Events", life_events_path %></li>
-</ul>
+ <body>
+   <h1>Life Tracker</h1>
+
+  <p class="spacing-top spacing-left">
+    <strong>Newest User:</strong>
+    <%= @last_user.name_joined %>
+  </p>
+
+  <p class="spacing-top spacing-left"><strong>Last School Attended</strong></p>
+
+  <% name = "" %>
+  <% beginning_year = 0 %>
+  <% ending_year = 0 %>
+  <% @last_user.school.order(:beginning_year).each do |school| %>
+    <% if school.beginning_year > beginning_year %>
+    <% name = school.name %>
+    <% beginning_year = school.beginning_year %>
+    <% ending_year = school.ending_year %>
+    <% end %>
+  <% end %>
+  <p class="spacing-left">
+    <strong>Name:</strong>
+    <%= name %> &nbsp; | &nbsp;
+    <strong>Year Started:</strong>
+    <%= beginning_year %> &nbsp; | &nbsp;
+    <strong>Year Graduated:</strong>
+    <%= ending_year %>
+  </p>
+
+  <p class="spacing-top spacing-left"><strong>Most Recent Life Event</strong></p>
+
+  <% title = "" %>
+  <% year = 0 %>
+  <% description = "" %>
+  <% @last_user.life_event.order(:year).each do |event| %>
+    <% if event.year > year %>
+    <% title = event.title %>
+    <% year = event.year %>
+    <% description = event.description %>
+    <% end %>
+  <% end %>
+  <p class="spacing-left">
+    <strong>Title:</strong>
+    <%= title %> &nbsp; | &nbsp;
+    <strong>Year:</strong>
+    <%= year %> &nbsp; | &nbsp;
+    <strong>Description:</strong>
+    <%= description %>
+  </p>
+
+</body>

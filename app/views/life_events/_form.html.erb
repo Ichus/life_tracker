@@ -11,19 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :person_id, "Name", class: "left inline" %></div>
+    <div class="small-4 columns left hug-left"><%= f.collection_select :person_id, Person.all, :id, :name_joined %></div>
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.text_field :year %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :title, class: "left inline" %></div>
+    <div class="small-4 columns left hug-left"><%= f.text_field :title %></div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :year, class: "left inline" %></div>
+    <div class="small-4 columns left hug-left"><%= f.text_field :year %></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :description, class: "left inline" %></div>
+    <div class="small-10 columns left hug-left"><%= f.text_field :description %></div>
+  </div>
+  <div class="row">
+    <div class="small-9 columns hug-left"><%= f.submit %></div>
   </div>
 <% end %>

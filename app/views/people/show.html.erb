@@ -1,29 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Id:</strong>
-  <%= @person.id %>
-</p>
-
-<p>
+<p class="spacing-top spacing-left">
   <strong>First name:</strong>
   <%= @person.first_name %>
 </p>
 
-<p>
+<p class="spacing-left">
   <strong>Last name:</strong>
-  <%= @person.last_name %>
+  <%= @person.last_name %><br><br>
 </p>
 
-<p>
-  <strong>Schools:</strong>
-  <%= @person.schools %>
-</p>
+<p class="spacing-top spacing-left"><strong>Schools Attended</strong></p>
 
-<p>
-  <strong>Life events:</strong>
-  <%= @person.life_events %>
+<% name = "" %>
+<% beginning_year = 0 %>
+<% ending_year = 0 %>
+<% @person.school.order(:beginning_year).each do |school| %>
+<% name = school.name %>
+<% beginning_year = school.beginning_year %>
+<% ending_year = school.ending_year %>
+<p class="spacing-left">
+  <strong>School:</strong>
+  <%= name %> &nbsp; | &nbsp;
+  <strong>Year Started:</strong>
+  <%= beginning_year %> &nbsp; | &nbsp;
+  <strong>Year Graduated:</strong>
+  <%= ending_year %>
 </p>
+<% end %>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<p class="spacing-top spacing-left"><strong>Life Events</strong></p>
+
+<% title = "" %>
+<% year = 0 %>
+<% description = "" %>
+<% @person.life_event.order(:year).each do |event| %>
+<% title = event.title %>
+<% year = event.year %>
+<% description = event.description %>
+<p class="spacing-left">
+  <strong>Title:</strong>
+  <%= title %> &nbsp; | &nbsp;
+  <strong>Year:</strong>
+  <%= year %> &nbsp; | &nbsp;
+  <strong>Description:</strong>
+  <%= description %>
+</p>
+<% end %>
+
+<p class="spacing-top spacing-left">
+  <%= link_to 'Edit', edit_person_path(@person) %> |
+  <%= link_to 'Back', people_path %>
+</p>

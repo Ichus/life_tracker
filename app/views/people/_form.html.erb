@@ -11,27 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :first_name, class: "left inline" %></div>
+    <div class="small-4 columns left hug-left"><%= f.text_field :first_name %></div>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <div class="row hug-left">
+    <div class="small-2 columns"><%= f.label :last_name, class: "left inline" %></div>
+    <div class="small-4 columns left hug-left"><%= f.text_field :last_name %></div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :schools %><br>
-    <%= f.text_field :schools %>
-  </div>
-  <div class="field">
-    <%= f.label :life_events %><br>
-    <%= f.text_field :life_events %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="small-9 columns hug-left"><%= f.submit %></div>
   </div>
 <% end %>
